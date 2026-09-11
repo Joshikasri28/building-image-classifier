@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Check</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="main">
+
+        <section class="intro">
+            <h1>Image Classification</h1>
+            <p>Upload an image to check whether it contains a building.</p>
+        </section>
+
+        <section class="card">
+
+            <div class="upload-area" id="uploadArea">
+
+                <div class="upload-icon">↑</div>
+
+                <h2>Upload Image</h2>
+
+                <p>Select an image to check.</p>
+
+                <input
+                    type="file"
+                    id="imageInput"
+                    accept="image/*"
+                    hidden
+                >
+
+                <button
+                    type="button"
+                    id="browseButton"
+                    class="secondary-button"
+                >
+                    Browse Files
+                </button>
+
+            </div>
+
+            <div class="preview-area" id="previewArea">
+                <p>No image selected</p>
+            </div>
+
+            <button
+                type="button"
+                id="checkButton"
+                class="primary-button"
+            >
+                Check Image
+            </button>
+
+        </section>
+
+        <section class="result-card">
+
+            <h2>Result</h2>
+
+            <div id="result" class="result-box">
+
+                <div class="result-status">—</div>
+
+                <p>No result yet.</p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
