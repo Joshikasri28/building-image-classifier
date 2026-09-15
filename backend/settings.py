@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-m-#-f-j7o+k%ba=o&(552@fo%z@(m2)vc$)c=t%(@r_ihg)mh3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "building-image-classifier.onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
 
 
 # Application definition
