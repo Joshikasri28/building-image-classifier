@@ -20,7 +20,8 @@ feature_model = MobileNetV2(
 feature_model.trainable = False
 
 classifier = joblib.load(
-    settings.BASE_DIR / "building_one_class.pkl"
+    settings.BASE_DIR / "business_one_class.pkl"
+
 )
 
 
