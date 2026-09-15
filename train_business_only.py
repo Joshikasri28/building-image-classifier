@@ -9,7 +9,6 @@ from tensorflow.keras.utils import load_img, img_to_array
 from sklearn.svm import OneClassSVM
 
 
-# Dataset path
 DATASET_PATH = r"C:\Users\ELCOT\Desktop\Business\dataset\building"
 
 
@@ -22,8 +21,6 @@ feature_model = MobileNetV2(
 
 feature_model.trainable = False
 
-
-# Extract features
 features = []
 image_count = 0
 
@@ -63,8 +60,6 @@ features = np.array(features)
 print("Business images:", image_count)
 print("Feature shape:", features.shape)
 
-
-# One-Class SVM
 classifier = OneClassSVM(
     kernel="rbf",
     gamma="scale",
@@ -73,14 +68,10 @@ classifier = OneClassSVM(
 
 classifier.fit(features)
 
-
-# Save model
 joblib.dump(
     classifier,
     "business_one_class.pkl"
 )
-
-# Save features for reference
 np.save(
     "business_features.npy",
     features

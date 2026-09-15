@@ -74,7 +74,7 @@ checkButton.addEventListener("click", async function () {
 
     try {
         const response = await fetch(
-            "http://127.0.0.1:8000/api/verify/",
+            "https://building-image-classifier.onrender.com/api/verify/",
             {
                 method: "POST",
                 body: formData
