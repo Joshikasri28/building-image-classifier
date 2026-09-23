@@ -1,57 +1,3 @@
-const imageInput = document.getElementById("imageInput");
-const browseButton = document.getElementById("browseButton");
-const uploadArea = document.getElementById("uploadArea");
-const previewArea = document.getElementById("previewArea");
-const checkButton = document.getElementById("checkButton");
-const result = document.getElementById("result");
-
-browseButton.addEventListener("click", function () {
-    imageInput.click();
-});
-
-imageInput.addEventListener("change", function () {
-    const file = imageInput.files[0];
-
-    if (file) {
-        showImage(file);
-    }
-});
-
-uploadArea.addEventListener("dragover", function (event) {
-    event.preventDefault();
-    uploadArea.classList.add("dragging");
-});
-
-uploadArea.addEventListener("dragleave", function () {
-    uploadArea.classList.remove("dragging");
-});
-
-uploadArea.addEventListener("drop", function (event) {
-    event.preventDefault();
-    uploadArea.classList.remove("dragging");
-
-    const file = event.dataTransfer.files[0];
-
-    if (file && file.type.startsWith("image/")) {
-        showImage(file);
-    }
-});
-
-function showImage(file) {
-    const imageUrl = URL.createObjectURL(file);
-
-    previewArea.innerHTML = `
-        <img src="${imageUrl}" alt="Selected image">
-    `;
-
-    previewArea.style.display = "block";
-
-    result.innerHTML = `
-        <div class="result-status">Ready</div>
-        <p>The image is ready to be checked.</p>
-    `;
-}
-
 checkButton.addEventListener("click", async function () {
 
     const file = imageInput.files[0];
@@ -83,15 +29,17 @@ checkButton.addEventListener("click", async function () {
 
         const data = await response.json();
 
-        if (data.success) {
+        if (response.ok) {
             result.innerHTML = `
-                <div class="result-status">${data.result}</div>
+                <div class="result-status">
+                    ${data.matching_status ? "YES" : "NO"}
+                </div>
                 <p>Image classification completed.</p>
             `;
         } else {
             result.innerHTML = `
                 <div class="result-status">Error</div>
-                <p>${data.message}</p>
+                <p>Unable to classify the image.</p>
             `;
         }
 
